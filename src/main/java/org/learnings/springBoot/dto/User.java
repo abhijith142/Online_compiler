@@ -2,12 +2,14 @@ package org.learnings.springBoot.dto;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
+@Document(collection = "users")
 public class User {
 	@Id
+	@Indexed(unique=true)
 	private int id;
 	private String name;
 	private String fullName;
