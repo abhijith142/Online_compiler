@@ -9,8 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class User {
 	@Id
-	@Indexed(unique=true)
 	private int id;
+	@Indexed(unique=true)
 	private String name;
 	private String fullName;
 	private String displayPic;
