@@ -2,12 +2,14 @@ package org.learnings.springBoot.login;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 public class UserFormBean {
 	private String name;
 	private String fullName;
 	private MultipartFile displayPic;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dob;
 	public String getName() {
 		return name;

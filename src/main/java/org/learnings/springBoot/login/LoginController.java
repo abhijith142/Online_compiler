@@ -1,22 +1,27 @@
 package org.learnings.springBoot.login;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@RestController
+@Controller
 public class LoginController {
 	
-	@RequestMapping(method=RequestMethod.GET,value="/signUp")
-	public String signUpForm()
+	@GetMapping("/signUp")
+	public String signUpForm(Model model)
 	{
+		model.addAttribute("userFormBean", new UserFormBean());
 		return "signUp";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST,value="/signUp")
+	@PostMapping("/signUp")
 	public void signUp(@ModelAttribute UserFormBean userFormBean)
 	{
-		
+		System.out.println(userFormBean.getName());
+		System.out.println(userFormBean.getFullName());
+		System.out.println(userFormBean.getDisplayPic());
+		System.out.println(userFormBean.getDob().toString());
 	}
 }
