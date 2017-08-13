@@ -45,4 +45,14 @@ public class User {
 	public void setDob(Date dob) {
 		this.dob = dob;
 	}
+	
+	public User(int id, String name, String fullName, String displayPic, Date dob) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.fullName = fullName;
+		this.displayPic = displayPic;
+		this.dob = dob;
+	}
+	
 }
