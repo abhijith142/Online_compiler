@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -21,11 +22,15 @@ public class LoginController {
 	private final static Logger logger = Logger.getLogger(LoginController.class);
 	@Autowired
 	UserService userService;
-	
-	String destination = "./uploads/";
+	@Autowired 
+	ServletContext context;
+
+	String destination;
 	
 	@PostConstruct
 	public void init() {
+		destination =  context.getRealPath("/uploads/");
+		logger.info(destination);
 		if(! new File(destination).exists()) {
 			logger.info("Creating Uploads directory");
 			new File(destination).mkdir();
@@ -42,13 +47,13 @@ public class LoginController {
 	@PostMapping("/signUp")
 	public void signUp(@ModelAttribute UserFormBean userFormBean)
 	{
-		String displayPicPath = destination + userFormBean.getName();
+		String displayPicLocation =  destination + userFormBean.getName();
 		MultipartFile file = userFormBean.getDisplayPic();
-		if(! new File(displayPicPath).exists()) {
-			new File(displayPicPath).mkdir();
+		if(! new File(displayPicLocation).exists()) {
+			new File(displayPicLocation).mkdir();
 		}
 		try {
-			file.transferTo(new File(displayPicPath + "/" + file.getOriginalFilename()));
+			file.transferTo(new File(displayPicLocation + "/" + file.getOriginalFilename()));
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
