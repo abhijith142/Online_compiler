@@ -5,9 +5,9 @@ import java.io.IOException;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
+import org.learnings.springBoot.dto.User;
 import org.learnings.springBoot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,6 +61,7 @@ public class LoginController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		//userService.signUp(userFormBean);
+		User user = new User(userFormBean.getName(),userFormBean.getFullName(),displayPicLocation,userFormBean.getDob());
+		userService.signUp(user);
 	}
 }
