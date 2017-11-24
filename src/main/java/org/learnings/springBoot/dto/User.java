@@ -2,6 +2,7 @@ package org.learnings.springBoot.dto;
 
 import java.util.Date;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,16 +10,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class User {
 	@Id
-	private int id;
+	private ObjectId id;
 	@Indexed(unique=true)
 	private String name;
 	private String fullName;
 	private String displayPic;
 	private Date dob;
-	public int getId() {
+	public ObjectId getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(ObjectId id) {
 		this.id = id;
 	}
 	public String getName() {
