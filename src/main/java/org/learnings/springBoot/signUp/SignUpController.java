@@ -1,4 +1,4 @@
-package org.learnings.springBoot.login;
+package org.learnings.springBoot.signUp;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
-public class LoginController {
-	private final static Logger logger = Logger.getLogger(LoginController.class);
+public class SignUpController {
+	private final static Logger logger = Logger.getLogger(SignUpController.class);
 	@Autowired
 	UserService userService;
 	@Autowired 

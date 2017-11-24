@@ -1,4 +1,4 @@
-package org.learnings.springBoot.login;
+package org.learnings.springBoot.signUp;
 
 import java.util.Date;
 
